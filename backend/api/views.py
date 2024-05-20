@@ -17,12 +17,12 @@ from .filters import IngredientFilter, RecipeFilter
 from .permissions import IsAuthorOrReadOnly
 from .serializers import (
     UserCreateSerializer, UserDetailSerializer, IngredientSerializer,
-    RecipeWriteSerializer, RecipeReadSerializer, SubscriptionSerializer, TagSerializer, UserSerializer
+    RecipeWriteSerializer, RecipeReadSerializer, SubscriptionSerializer, TagSerializer, SetPasswordSerializer
 )
 
 User = get_user_model()
 
-class UsersViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+class UserViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     queryset = User.objects.all()
     permission_classes = [permissions.AllowAny]
 
