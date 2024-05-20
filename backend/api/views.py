@@ -22,7 +22,7 @@ from .serializers import (
 
 User = get_user_model()
 
-class UserViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+class UsersViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     queryset = User.objects.all()
     permission_classes = [permissions.AllowAny]
 
