@@ -81,6 +81,7 @@ class RecipeIngredient(models.Model):
     def __str__(self):
         return f'{self.ingredient.name} в {self.recipe.name}'
 
+
 class Favorite(models.Model):
     user = models.ForeignKey(
         User,

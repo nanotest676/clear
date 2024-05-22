@@ -13,4 +13,3 @@ urlpatterns = [
     path('self/', SelfUserView.as_view(), name='self-user'),
     path('set-password/', SetPasswordView.as_view(), name='set-password'),
 ]
-

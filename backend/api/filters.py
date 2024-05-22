@@ -6,6 +6,7 @@ from recipes.models import Ingredient, Recipe, Tag
 
 User = get_user_model()
 
+
 class IngredientFilter(filters.FilterSet):
     """Filter for ingredients by name, supporting both startswith and contains lookups."""
     name = filters.CharFilter(method='filter_name')
