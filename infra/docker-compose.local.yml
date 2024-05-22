@@ -33,7 +33,6 @@ services:
     volumes:
       - ../frontend/:/app/result_build/
 
-
   nginx:
     build: .
     ports:

@@ -18,7 +18,7 @@ services:
       gunicorn --workers=4 --reload --max-requests=1000 foodgram.wsgi -b 0.0.0.0:8000"
     volumes:
       - ../backend:/code
-      - static_volume:/app/static
+      - ../backend/static:/code/static
     expose:
       - 8000
     env_file:
@@ -45,7 +45,6 @@ services:
       - pgadmin-data:/var/lib/pgadmin
 
   frontend:
-    image: nanotest676/foodgram_frontend:latest
     build:
       context: ../frontend
       dockerfile: Dockerfile
