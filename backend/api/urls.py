@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import UserViewSet, TagViewSet, IngredientViewSet, RecipeViewSet, SelfUserView, SetPasswordView
+from .views import UserViewSet, TagViewSet, IngredientViewSet, RecipeViewSet, SelfUserView, SetPasswordView, UserMe
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet, basename='user')
@@ -10,9 +10,8 @@ router.register(r'recipes', RecipeViewSet, basename='recipe')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('self/', SelfUserView.as_view(), name='self-user'),
+    path('users/me/', SelfUserView.as_view(), name='self-user'),
     path('set-password/', SetPasswordView.as_view(), name='set-password'),
-    path('auth/', include('djoser.urls')),  # Подключаем маршруты Djoser
-    path('auth/', include('djoser.urls.authtoken')),  # Подключаем маршруты Djoser для токенов
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
 ]
-

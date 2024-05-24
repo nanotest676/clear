@@ -16,7 +16,7 @@ from django.contrib.auth import get_user_model
 from .filters import IngredientFilter, RecipeFilter
 from .permissions import IsAuthorOrReadOnly
 from .serializers import (
-    UserCreateSerializer, UserDetailSerializer, IngredientSerializer,
+    UserCreateSerializer, UserDetailSerializer, IngredientSerializer, UserSerializer,
     RecipeWriteSerializer, RecipeReadSerializer, SubscriptionSerializer, TagSerializer, SetPasswordSerializer
 )
 
@@ -59,6 +59,15 @@ class UserViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin, mixins.ListM
                 subscription.delete()
                 return Response(status=status.HTTP_204_NO_CONTENT)
             return Response({'error': 'Subscription does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+    
+class UserMe():
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        serializer = UserSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 class SelfUserView(views.APIView):
     permission_classes = [permissions.IsAuthenticated]

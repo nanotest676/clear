@@ -6,6 +6,4 @@ urlpatterns = [
     path('api/', include('api.urls')),
     path('api/users/', include('users.urls')),
     path('api/recipes/', include('recipes.urls')),
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.authtoken')),
 ]

@@ -6,6 +6,7 @@ from django.contrib.auth.password_validation import validate_password
 
 User = get_user_model()
 
+
 class UserCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -16,15 +17,18 @@ class UserCreateSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(**validated_data)
         return user
 
+
 class UserDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'email')
 
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'email', 'first_name', 'last_name', 'role', 'date_joined')
+
 
 class FollowSerializer(serializers.ModelSerializer):
     follower = serializers.SlugRelatedField(slug_field='username', queryset=User.objects.all())
@@ -34,15 +38,18 @@ class FollowSerializer(serializers.ModelSerializer):
         model = Follow
         fields = ('id', 'follower', 'following')
 
+
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
         fields = ['id', 'name', 'slug']
 
+
 class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingredient
         fields = ['id', 'name', 'measurement_unit']
+
 
 class RecipeIngredientSerializer(serializers.ModelSerializer):
     ingredient = IngredientSerializer()
@@ -50,6 +57,7 @@ class RecipeIngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = RecipeIngredient
         fields = ['id', 'ingredient', 'amount']
+
 
 class RecipeReadSerializer(serializers.ModelSerializer):
     ingredients = RecipeIngredientSerializer(many=True)
@@ -70,6 +78,7 @@ class RecipeReadSerializer(serializers.ModelSerializer):
             'is_in_shopping_cart'
         ]
 
+
 class RecipeWriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recipe
@@ -83,10 +92,12 @@ class RecipeWriteSerializer(serializers.ModelSerializer):
             'cooking_time'
         ]
 
+
 class SubscriptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'email', 'first_name', 'last_name')
+
 
 class SetPasswordSerializer(serializers.Serializer):
     current_password = serializers.CharField(required=True)
@@ -103,3 +114,9 @@ class SetPasswordSerializer(serializers.Serializer):
         user.set_password(self.validated_data['new_password'])
         user.save()
         return user
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email', 'first_name', 'last_name', 'role', 'date_joined')
