@@ -34,18 +34,6 @@ services:
     depends_on:
       - db
 
-  pgadmin:
-    container_name: pgadmin4_container
-    image: dpage/pgadmin4:7
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
-    ports:
-      - "5050:8888"
-    volumes:
-      - pgadmin-data:/var/lib/pgadmin
-
   frontend:
     build:
       context: ../frontend
@@ -70,4 +58,3 @@ services:
 volumes:
   postgres_data:
   media_volume:
-  pgadmin-data:

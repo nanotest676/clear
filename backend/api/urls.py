@@ -12,4 +12,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('self/', SelfUserView.as_view(), name='self-user'),
     path('set-password/', SetPasswordView.as_view(), name='set-password'),
+    path('auth/', include('djoser.urls')),  # Подключаем маршруты Djoser
+    path('auth/', include('djoser.urls.authtoken')),  # Подключаем маршруты Djoser для токенов
 ]
+

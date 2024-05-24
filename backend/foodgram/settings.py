@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-x24jhq=h(at3nm$!fpe#9qmw)yf&^iug3g#qib6$x-rgn5ppz1
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'web']
 
 
 INSTALLED_APPS = [
@@ -60,7 +60,7 @@ WSGI_APPLICATION = 'foodgram.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.getenv("DB_NAME"),
         'USER': os.getenv('POSTGRES_USER'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
