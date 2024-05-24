@@ -116,25 +116,4 @@ class SetPasswordSerializer(serializers.Serializer):
         return user
 
 
-class CustomUserSerializer(UserSerializer):
-    is_subscribed = serializers.SerializerMethodField()
 
-    class Meta:
-        model = User
-        fields = (
-            "email",
-            "id",
-            "username",
-            "first_name",
-            "last_name",
-            "is_subscribed",
-        )
-
-    def get_is_subscribed(self, obj):
-        user = self.context["request"].user
-        follow = self.context["follow"]
-        if str(user) != "AnonymousUser":
-            if follow.filter(user=user, author=obj):
-                return True
-            return False
-        return None

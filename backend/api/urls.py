@@ -12,6 +12,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('users/me/', SelfUserView.as_view(), name='self-user'),
     path('set_password/', SetPasswordView.as_view(), name='set_password'),
+    # path("users/set_password/", set_password, name="set_password"),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
 ]
