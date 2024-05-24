@@ -16,7 +16,7 @@ from django.contrib.auth import get_user_model
 from .filters import IngredientFilter, RecipeFilter
 from .permissions import IsAuthorOrReadOnly
 from .serializers import (
-    UserCreateSerializer, UserDetailSerializer, IngredientSerializer, UserSerializer,
+    UserCreateSerializer, UserDetailSerializer, IngredientSerializer, UserSerializer, CustomUserSerializer,
     RecipeWriteSerializer, RecipeReadSerializer, SubscriptionSerializer, TagSerializer, SetPasswordSerializer
 )
 

@@ -2,6 +2,7 @@ from rest_framework import viewsets, permissions
 from django.contrib.auth import get_user_model
 from .models import Follow
 from .serializers import UserSerializer, FollowSerializer, SetPasswordSerializer
+from api.serializers import CustomUserSerializer
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -12,8 +13,9 @@ User = get_user_model()
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = CustomUserSerializer
     permission_classes = [permissions.IsAuthenticated]
+    
 
 class FollowViewSet(viewsets.ModelViewSet):
     queryset = Follow.objects.all()

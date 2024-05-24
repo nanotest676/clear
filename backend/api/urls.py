@@ -11,7 +11,7 @@ router.register(r'recipes', RecipeViewSet, basename='recipe')
 urlpatterns = [
     path('', include(router.urls)),
     path('users/me/', SelfUserView.as_view(), name='self-user'),
-    path('set-password/', SetPasswordView.as_view(), name='set-password'),
+    path('set_password/', SetPasswordView.as_view(), name='set_password'),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
 ]
